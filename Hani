@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محول العملة السورية</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            color: #fff;
+        } 
+
+        .container { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px; 
+            border-radius: 30px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            width: 90%; 
+            max-width: 380px; 
+            text-align: center;
+        } 
+
+        h2 { 
+            color: #4a148c; 
+            margin-bottom: 30px; 
+            font-size: 1.8rem;
+            font-weight: 800;
+        } 
+
+        .input-box { margin-bottom: 25px; text-align: right; }
+        
+        label { 
+            display: block; 
+            margin-bottom: 10px; 
+            margin-right: 5px;
+            color: #6b7280; 
+            font-weight: 600;
+            font-size: 0.9rem;
+        } 
+
+        input { 
+            width: 100%; 
+            padding: 18px; 
+            border: 2px solid #e5e7eb; 
+            border-radius: 15px; 
+            font-size: 1.4rem; 
+            color: #1f2937;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+            text-align: center;
+        } 
+
+        input:focus { 
+            border-color: #764ba2; 
+            background: #fff;
+            outline: none;
+            box-shadow: 0 0 10px rgba(118, 75, 162, 0.2);
+            transform: translateY(-2px);
+        } 
+
+        .icon-swap { 
+            background: #764ba2; 
+            width: 45px; 
+            height: 45px; 
+            line-height: 45px; 
+            border-radius: 50%; 
+            margin: -10px auto 15px; 
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: default;
+            color: white;
+        }
+    </style>
+</head>
+<body> 
+
+<div class="container">
+    <h2>محول العملة السورية</h2>
+    
+    <div class="input-box">
+        <label>الليرة السورية (القديمة)</label>
+        <input type="number" id="oldVal" placeholder="0" oninput="convert('old')">
+    </div> 
+
+    <div class="icon-swap">⇅</div> 
+
+    <div class="input-box">
+        <label>الليرة السورية (الجديدة)</label>
+        <input type="number" id="newVal" placeholder="0" oninput="convert('new')">
+    </div>
+</div> 
+
+<script>
+    function convert(type) {
+        const oldInput = document.getElementById('oldVal');
+        const newInput = document.getElementById('newVal'); 
+
+        if (type === 'old') {
+            const val = oldInput.value;
+            newInput.value = val ? (val / 100) : "";
+        } else {
+            const val = newInput.value;
+            oldInput.value = val ? (val * 100) : "";
+        }
+    }
+</script> 
+
+</body>
+</html>
